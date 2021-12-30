@@ -1,0 +1,12 @@
+﻿  main.cpp
+C:\Private\Lotnictwo i kosmonautyka\Informatyka\Totolotek\main.cpp(85,12): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+C:\Private\Lotnictwo i kosmonautyka\Informatyka\Totolotek\main.cpp(100,12): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+C:\Private\Lotnictwo i kosmonautyka\Informatyka\Totolotek\main.cpp(227,18): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
+C:\Private\Lotnictwo i kosmonautyka\Informatyka\Totolotek\main.cpp(228,18): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
+C:\Private\Lotnictwo i kosmonautyka\Informatyka\Totolotek\main.cpp(230,18): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
+C:\Private\Lotnictwo i kosmonautyka\Informatyka\Totolotek\main.cpp(231,18): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
+C:\Private\Lotnictwo i kosmonautyka\Informatyka\Totolotek\main.cpp(245,18): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
+C:\Private\Lotnictwo i kosmonautyka\Informatyka\Totolotek\main.cpp(246,18): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
+C:\Private\Lotnictwo i kosmonautyka\Informatyka\Totolotek\main.cpp(248,18): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
+C:\Private\Lotnictwo i kosmonautyka\Informatyka\Totolotek\main.cpp(249,18): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
+  ProjektVisualStudio2013.vcxproj -> C:\Private\Lotnictwo i kosmonautyka\Informatyka\Totolotek\Debug\ProjektVisualStudio2013.exe

@@ -1,2 +1,2 @@
-# Totolotek
-projekt inf1 LiK
+# courses_graphics
+VC project with graphic library
