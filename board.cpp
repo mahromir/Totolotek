@@ -126,12 +126,12 @@ void sim_init()
 			blowing = 0;
 		}
 
+		// załączanie dmuchawy
 		if (blowing == 1) {
 			circle(657, 147, 5);
 			dmuchawa(x, y, vx, vy, m, N);
 		}
 
-		//detect_wall_collision(x, y, vx, vy, m, N, cl); //cl
 		detect_ball_collision(x, y, vx, vy, m, N);
 		displacement(x, y, vx, vy, N, t);
 		detect_sphere_collision(x, y, vx, vy, m, N);
@@ -146,7 +146,7 @@ void sim_init()
 }
 
 
-
+// randomowe rozmieszczenie z randomowymi prędkościami
 void init(int* x, int* y, double* vx, double* vy, double* m, int N, int* cl) {
 	srand(time(NULL));
 	for (int i = 0; i < N; i++) {
@@ -195,6 +195,7 @@ void init(int* x, int* y, double* vx, double* vy, double* m, int N, int* cl) {
 	}
 }
 
+// do testowania zderzeń idealnie sprężystych 
 void init2(int* x, int* y, double* vx, double* vy, double* m, int N, int* cl) {
 	srand(time(NULL));
 	for (int i = 0; i < N; i++) {
@@ -231,6 +232,7 @@ void init2(int* x, int* y, double* vx, double* vy, double* m, int N, int* cl) {
 	}
 }
 
+// rozmieszcza piłeczki w centrum okręgu, bez prędkości początkowych
 void init3(int* x, int* y, double* vx, double* vy, double* m, int N) {
 	// rozmieszczenie piłek tak jak w instrukcji
 	for (int i = 0; i < N; i++) {
@@ -300,7 +302,8 @@ void displacement(int* x, int* y, double* vx, double* vy, int N, double t) {
 
 }
 
-// wykrywanie kolizji z podloga i scianami
+// wykrywanie kolizji z podloga i scianami 
+// NOTE - nie potrzebne przy finalnej wersji
 void detect_wall_collision(int* x, int* y, double* vx, double* vy, double* m, int N, int* cl) {
 	for (int i = 0; i < N; i++) {
 		//podloga
@@ -327,6 +330,7 @@ void detect_wall_collision(int* x, int* y, double* vx, double* vy, double* m, in
 	}
 }
 
+// TODO - naprawic zderzenia z okręgiem
 void detect_sphere_collision(int* x, int* y, double* vx, double* vy, double* m, int N) {
 
 	int middle_x = WIN_WIDTH / 2;
@@ -354,24 +358,6 @@ void detect_sphere_collision(int* x, int* y, double* vx, double* vy, double* m, 
 			
 			x[i] += (int)(offset * centers_unit_vector[0]);
 			y[i] += (int)(offset * centers_unit_vector[1]);
-
-
-			/*
-			do
-			{
-				//printf("here1\n");
-
-				temp_x -= (centers_unit_vector[0] * 2);
-				temp_y -= (centers_unit_vector[1] * 2);
-
-
-				center_dist = sqrtf(pow(temp_x - middle_x, 2) + pow(temp_y - middle_y, 2));
-
-			} while (center_dist + m[i] > radius);
-			*/
-
-			//x[i] = (int)temp_x;
-			//y[i] = (int)temp_y;
 
 
 			centers_unit_vector[0] = ((double)(x[i] - middle_x)) / center_dist;
@@ -420,12 +406,13 @@ void detect_sphere_collision(int* x, int* y, double* vx, double* vy, double* m, 
 
 
 			//printf("out of sphere\n");
-			status(x, y, vx, vy, m, N);
+			//status(x, y, vx, vy, m, N);
 			//delay(1000);
 		}
 	}
 }
 
+// Działa dobrze
 void detect_ball_collision(int* x, int* y, double* vx, double* vy, double* m, int N) {
 
 	double relative_vel[2];
@@ -521,12 +508,12 @@ void dmuchawa(int* x, int* y, double* vx, double* vy, double* m, int N) {
 	rectangle(10, 400, 790, 600);
 	for (int i = 0; i < N; i++) {
 		// definiowanie obaszaru gdzie wieje dmucha wiatr a gdzie nie
-		if ((x[i] > 10) && (x[i] > 790) && (y[i] > 400) && (y[i] < 600))
-			vy[i] += -100;
+		if ((x[i] > 10 && x[i] < 790) && (y[i] > 400 && y[i] < 600)) {
+			vy[i] += -5.0;
+			vx[i] += -2.0;
+		}
 	}
 }
-
-
 
 
 // (cw. z lab: Wykyrwanie minimalnej i maksymalnej wsp x oraz y wraz indeksami tych pilek)
