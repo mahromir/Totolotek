@@ -5,7 +5,7 @@
 #include<stdlib.h>
 #include "winbgi2.h"
 #include "interface.h"
-#include<stdbool.h>
+#include <stdbool.h>
 
 #define WIN_WIDTH	800
 #define WIN_HEIGHT	600
@@ -53,9 +53,9 @@ void sim_init()
 
 	// nadawanie pi�kom randomowych parametrów
 	//init(x,	y,vx,vy,m,N, cl);	//cl
-	//init2(x, y, vx, vy, m, N, cl);	//cl
+	init2(x, y, vx, vy, m, N, cl);	//cl
+	//init3(x, y, vx, vy, m, N);	//cl
 
-	init3(x, y, vx, vy, m, N);	//cl
 	int mouse_x = 0;
 	int mouse_y = 0;
 
@@ -272,7 +272,7 @@ void status(int* x, int* y, double* vx, double* vy, double* m, int N) {
 		settextstyle(0, HORIZ_DIR, 2);
 		outtextxy(x[i], y[i] + 5, score_s);
 
-		//line(x[i], y[i], x[i] + vx[i] * 10, y[i] + vy[i] * 10);						//rysowanie wektora predkosci
+		line(x[i], y[i], x[i] + vx[i] * 10, y[i] + vy[i] * 10);						//rysowanie wektora predkosci
 	}
 	int middle_x = WIN_WIDTH / 2;
 	int middle_y = WIN_HEIGHT / 2;
@@ -397,7 +397,7 @@ void detect_sphere_collision(int* x, int* y, double* vx, double* vy, double* m, 
 			double dpTan1 = vx[i] * tx + vy[i] * ty;
 			//double dpTan2 = vx[j] * tx + vy[j] * ty;
 
-			line(x[i], y[i], x[i] + vx[i] * 10, y[i] + vy[i] * 10);
+			line(x[i], y[i], x[i] + vx[i] * 10, y[i] + vy[i] * 10);			// stary wektor prędkosci
 
 			vx[i] = -0.8 * tx * dpTan1;
 			vy[i] = -0.8 * ty * dpTan1;
@@ -406,8 +406,8 @@ void detect_sphere_collision(int* x, int* y, double* vx, double* vy, double* m, 
 
 
 			//printf("out of sphere\n");
-			//status(x, y, vx, vy, m, N);
-			//delay(1000);
+			status(x, y, vx, vy, m, N);
+			delay(1000);
 		}
 	}
 }
